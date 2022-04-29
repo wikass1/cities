@@ -28,7 +28,9 @@ const highlightedString = function (value, city) {
 };
 
 const checkMatchesHTML = (html) =>
-  html ? (suggestions.innerHTML = html) : (suggestions.innerHTML = "dupazi");
+  html
+    ? (suggestions.innerHTML = html)
+    : (suggestions.innerHTML = "<li>NO CITY WAS FOUND ❌</li>");
 const displayMatches = function () {
   suggestions.innerHTML = suggestionsInnerDefault;
   const matchedArray = findMatches(this.value, cities);
@@ -49,7 +51,7 @@ const displayMatches = function () {
           `;
     })
     .join("");
-  checkMatchesHTML();
+  checkMatchesHTML(html);
 };
 
 searchInput.addEventListener("input", displayMatches);
